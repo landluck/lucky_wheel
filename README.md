@@ -9,7 +9,7 @@
 git clone https://github.com/landluck/lucky_wheel.git
 
 # 进入文件夹
-cd vue2-happyfri
+cd lucky_wheel
 
 # 安装依赖
 npm install
