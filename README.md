@@ -2,14 +2,17 @@
 
 >  a vue.js lucky_wheel support pc and mobile
 
-## Build Setup
 
-``` bash
-#在线观看地址
+在线观看地址
 
 
 https://landluck.github.io/
 
+
+
+## Build Setup
+
+``` bash
 
 
 # 克隆到本地
