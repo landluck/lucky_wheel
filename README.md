@@ -5,6 +5,13 @@
 ## Build Setup
 
 ``` bash
+#在线观看地址
+
+
+https://landluck.github.io/
+
+
+
 # 克隆到本地
 git clone https://github.com/landluck/lucky_wheel.git
 
