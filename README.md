@@ -9,6 +9,7 @@
 https://landluck.github.io/
 
 
+> v1.1.0 基于之前 v 1.0.0 的版本做了一些优化,更简单易懂
 
 ## Build Setup
 
