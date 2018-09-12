@@ -118,7 +118,7 @@ export default {
       rotate_transition: "transform 6s ease-in-out", //初始化选中的过度属性控制
       rotate_transition_pointer: "transform 12s ease-in-out", //初始化指针过度属性控制
       click_flag: true, //是否可以旋转抽奖
-      i: 0 //测试使用
+      index: 0 
     };
   },
   created() {
@@ -127,7 +127,7 @@ export default {
   computed: {
     toast_title() {
       return this.hasPrize
-        ? "恭喜您，获得" +this.prize_list[this.i].count + ' ' + this.prize_list[this.i].name
+        ? "恭喜您，获得" +this.prize_list[this.index].count + ' ' + this.prize_list[this.index].name
         : "未中奖";
     },
     toast_pictrue() {
@@ -140,15 +140,15 @@ export default {
     //此方法为处理奖品数据
     init_prize_list(list) {},
     rotate_handle() {
+      this.index = 1 //指定每次旋转到的奖品下标
       this.rotating();
-      this.i = this.i + 2;
     },
-    rotating(index) {
+    rotating() {
       if (!this.click_flag) return;
       var type = 0; // 默认为 0  转盘转动 1 箭头和转盘都转动(暂且遗留)
       var during_time = 5; // 默认为1s
       var random = Math.floor(Math.random() * 7);
-      var result_index = index || random; // 最终要旋转到哪一块，对应prize_list的下标
+      var result_index = this.index ; // 最终要旋转到哪一块，对应prize_list的下标
       var result_angle = [337.5, 292.5, 247.5, 202.5, 157.5, 112.5, 67.5, 22.5]; //最终会旋转到下标的位置所需要的度数
       var rand_circle = 6; // 附加多转几圈，2-3
       this.click_flag = false; // 旋转结束前，不允许再次触发
@@ -168,7 +168,7 @@ export default {
         // 旋转结束后，允许再次触发
         setTimeout(function() {
           that.click_flag = true;
-          that.game_over(this.i);
+          that.game_over();
         }, during_time * 1000 + 1500); // 延时，保证转盘转完
       } else {
         //
@@ -176,7 +176,7 @@ export default {
     },
     game_over() {
       this.toast_control = true;
-      this.hasPrize = this.prize_list[this.i].isPrize
+      this.hasPrize = this.prize_list[this.index].isPrize
     },
     //关闭弹窗
     close_toast() {
