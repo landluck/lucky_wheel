@@ -55,16 +55,16 @@ const CIRCLE_ANGLE = 360
 
 const config = {
   // 总旋转时间
-  duration: 3000,
+  duration: 4000,
   // 旋转圈数
-  circle: 6,
-  mode: 'linear'
+  circle: 8,
+  mode: 'ease-in-out'
 }
 
 export default {
   data() {
     return {
-      count: 1, // 剩余抽奖次数
+      count: 10, // 剩余抽奖次数
       duration: 3000, // 转盘旋转时间
       prizeList: [], // 奖品列表
       rotateAngle: 0, // 旋转角度
@@ -139,12 +139,19 @@ export default {
       return list
     },
     beginRotate() {
+      // 添加次数校验
+      
+      if(this.count === 0) return
+
       // 开始抽奖
       // 这里这里向服务端发起请求，得到要获得的奖
       // 可以返回下标，也可以返回奖品 id，通过查询 奖品列表，最终得到下标
 
       // 随机获取下标
       this.index = this.random(this.prizeList.length - 1);
+
+      // 减少剩余抽奖次数
+      this.count--
   
       // 开始旋转
       this.rotating()
