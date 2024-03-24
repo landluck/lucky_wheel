@@ -25,14 +25,12 @@
       <div class="main-bg"></div>
       <div class="bg-p"></div>
       <div class="content">
-        <div class="count">今日免费抽奖次数： {{ count}}</div>
+        <div class="count">剩余抽取次数： {{ count}}</div>
       </div>
       <div class="tip">
-        <div class="tip-title">活动规则</div>
+        <div class="tip-title">抽奖说明</div>
         <div class="tip-content">
-          <p>1.每日签到后，即可获得一次幸运大转盘的机会，仅限当天有效，过期作废。 2.金币抽奖，每10个金豆可兑换一次大转盘机会。</p>
-          <p>2.金币抽奖，每10个金豆可以兑换一次大转盘抽奖机会</p>
-          <p>3.所中金豆或积分到【我的账户】中查询。累计达到100金豆及以上，可以兑换相应奖品</p>
+          <p>1.告别吃饭选择困难。</p>
         </div>
       </div>
     </div>
@@ -64,7 +62,7 @@ const config = {
 export default {
   data() {
     return {
-      count: 10, // 剩余抽奖次数
+      count:99, // 剩余抽奖次数
       duration: 3000, // 转盘旋转时间
       prizeList: [], // 奖品列表
       rotateAngle: 0, // 旋转角度
@@ -93,8 +91,8 @@ export default {
     },
     toastTitle () {
       return this.prize && this.prize.isPrize === 1
-        ? "恭喜您，获得" +
-            this.prize.name
+        ? "系统推荐您今天吃" +
+            this.prize.name + "！"
         : "未中奖";
     },
     toastIcon() {
@@ -141,7 +139,7 @@ export default {
     beginRotate() {
       // 添加次数校验
       
-      if(this.count === 0) return
+      // if(this.count === 0) return
 
       // 开始抽奖
       // 这里这里向服务端发起请求，得到要获得的奖
